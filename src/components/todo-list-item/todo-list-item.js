@@ -13,7 +13,7 @@ class TodoListItem extends Component {
   }
 
   onMarkImportant = () => {
-    this.setState((important) => {return { important: !important }})
+    this.setState(({important}) => {return { important: !important }})
   }
 
   render() {
@@ -31,16 +31,18 @@ class TodoListItem extends Component {
     }
 
     return (
-      <span className={classNames}>
+      <div className={classNames + ' d-flex justify-content-between align-items-center'}>
         <span className='todo-list-item-label'
         onClick={ this.onLabelClick }>{ label }</span>
-        <button
-          onClick={this.onMarkImportant}
-          className='btn btn-outline-success'><i className="fas fa-exclamation" /></button>
-        <button
-        onClick={onDeleted}
-          className='btn btn-outline-danger'><i className="far fa-trash-alt" /></button>
-      </span>
+        <div>
+          <button
+            onClick={this.onMarkImportant}
+            className='btn btn-outline-success'><i className="fas fa-exclamation" /></button>
+          <button
+            onClick={onDeleted}
+            className='btn btn-outline-danger'><i className="far fa-trash-alt" /></button>
+        </div>
+      </div>
     )
   }
 }
