@@ -3,22 +3,8 @@ import './todo-list-item.css'
 
 class TodoListItem extends Component {
 
-  state = {
-    done: false,
-    important: false,
-  }
-
-  onLabelClick = () => {
-    this.setState(({done}) => {return { done: !done }})
-  }
-
-  onMarkImportant = () => {
-    this.setState(({important}) => {return { important: !important }})
-  }
-
   render() {
-    const { label, onDeleted } = this.props
-    const { done, important } = this.state
+    const { label, onDeleted, onToggleImportant, onToggleDone, important, done } = this.props
 
     let classNames = 'todo-list-item'
 
@@ -33,10 +19,10 @@ class TodoListItem extends Component {
     return (
       <div className={classNames + ' d-flex justify-content-between align-items-center'}>
         <span className='todo-list-item-label'
-        onClick={ this.onLabelClick }>{ label }</span>
+        onClick={onToggleDone}>{ label }</span>
         <div>
           <button
-            onClick={this.onMarkImportant}
+            onClick={onToggleImportant}
             className='btn btn-outline-success'><i className="fas fa-exclamation" /></button>
           <button
             onClick={onDeleted}
