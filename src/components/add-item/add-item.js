@@ -10,8 +10,10 @@ class AddItem extends Component {
     this.setState({label: e.target.value})
   }
 
-  onSubmite = () => {
-
+  onSubmit = (e) => {
+    e.preventDefault()
+    this.props.addItem(this.state.label)
+    this.setState({label: ''})
   }
 
   render() {
@@ -25,8 +27,9 @@ class AddItem extends Component {
         >
           <input type="text" className="form-control" id="inputPassword2" placeholder="New item name"
                  onChange={this.onLabelChange}
+                 value={this.state.label}
           />
-          <button onClick={() => {addItem('hi')}} type="submit" className="btn btn-primary">Add</button>
+          <button  type="submit" className="btn btn-primary">Add</button>
         </form>
 
       </div>

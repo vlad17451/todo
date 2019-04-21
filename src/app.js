@@ -12,7 +12,6 @@ export default class App extends Component {
   }
 
   createTodoItem(label) {
-
     return {
       label,
       important: false,
